@@ -11,12 +11,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf()
-            .disable();
+                .disable();
         http.sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.httpBasic();
         http.authorizeRequests()
-            .anyRequest()
-            .fullyAuthenticated();
+                .antMatchers("/email/**")
+                .fullyAuthenticated()
+                .anyRequest()
+                .permitAll();
     }
 }
