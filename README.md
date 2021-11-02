@@ -10,7 +10,7 @@ This service returns "Hello, world!" when receiving a GET request to the "/greet
 * Step 2:
 
 Extend the service in such a way that it accepts a request parameter named "name".
-The greeting should be adapted to return "Hello, <name>!".
+The greeting should be adapted to return "Hello, {name}!".
 
 * Step 3:
 
