@@ -1,9 +1,6 @@
 package world.inetum.realdolmen.jcc.spring.helloworld;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/email")
@@ -16,7 +13,10 @@ public class EmailController {
     }
 
     @PostMapping(consumes = "text/plain")
-    public void sendEmail(@RequestBody String body) {
-        emailService.sendEmail("robin.demol@realdolmen.com", body);
+    public void sendEmail(
+            @RequestParam("to") String to,
+            @RequestBody String body
+    ) {
+        emailService.sendEmail(to, body);
     }
 }

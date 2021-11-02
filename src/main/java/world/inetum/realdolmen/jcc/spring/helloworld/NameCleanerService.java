@@ -9,6 +9,7 @@ public class NameCleanerService {
         if (name == null || name.isBlank()) {
             return null;
         }
-        return name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
+        String trimmed = name.trim();
+        return trimmed.substring(0, 1).toUpperCase() + trimmed.substring(1).toLowerCase();
     }
 }
