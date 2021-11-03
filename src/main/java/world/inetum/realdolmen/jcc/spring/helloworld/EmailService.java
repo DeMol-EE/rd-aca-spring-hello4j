@@ -6,6 +6,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.security.RolesAllowed;
+
 @Service
 public class EmailService {
 
@@ -22,6 +24,7 @@ public class EmailService {
     }
 
     @Async
+    @RolesAllowed("EMAIL")
     public void sendEmail(String to, String body) {
         var email = new SimpleMailMessage();
         email.setFrom(from);

@@ -16,17 +16,15 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.http.MediaType;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(properties = {
         "email.from=mock-from",
         "email.subject=mock-subject",
-        "spring.security.user.name=John",
-        "spring.security.user.password=Doe",
 })
 @AutoConfigureMockMvc
 class EmailControllerIT {
@@ -43,13 +41,12 @@ class EmailControllerIT {
     private String from;
 
     @Test
-//    @WithMockUser // in case you don't want to skip testing basic auth
+    @WithMockUser(roles = "EMAIL")
     void send() throws Exception {
         var to = "robin.demol@realdolmen.com";
         var body = "This is the body";
         mockMvc.perform(post("/email")
                         .queryParam("to", to)
-                        .with(httpBasic("John", "Doe"))
                         .content(body)
                         .contentType(MediaType.TEXT_PLAIN))
                 .andExpect(status().is(200));
