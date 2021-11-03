@@ -14,6 +14,9 @@ public class EmailService {
     @Value("${email.from:no-reply@realdolmen.com}")
     private String from;
 
+    @Value("${email.subject:[JCC - Spring]}")
+    private String subject;
+
     public EmailService(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
@@ -23,7 +26,7 @@ public class EmailService {
         var email = new SimpleMailMessage();
         email.setFrom(from);
         email.setTo(to);
-        email.setSubject("[JCC - Spring]");
+        email.setSubject(subject);
         email.setText(body);
         mailSender.send(email);
     }
