@@ -25,7 +25,8 @@ Refactor the HTTP service, so it delegates to the new component.
 Add a logging filter/interceptor to log all requests and responses.
 Use it to log the requested URI on the way in and the response status code on the way out.
 Do not use `System.out.println()`, use a logging framework.
-The easiest to use is `java.util.logging` (JUL), since it is part of the JDK.
+The easiest to use is `java.util.logging` (JUL), since it is part of the JDK and thus does not add any extra dependencies.
+(On the other hand, it's not the nicest logging framework to work with...)
 
 * Step 4:
 
