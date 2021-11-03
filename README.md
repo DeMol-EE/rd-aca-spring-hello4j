@@ -16,7 +16,7 @@ The greeting should be adapted to return "Hello, {name}!".
 
 Add "business logic" which ensures that the name (if present) is automatically properly capitalized (first letter is made uppercase, others lowercase).
 Extract this logic into a separate component.
-Write a unit test to cover this logic.
+Write a unit test to cover that component.
 Use the DI framework to inject an instance of the new component into the HTTP service.
 Refactor the HTTP service, so it delegates to the new component.
 
