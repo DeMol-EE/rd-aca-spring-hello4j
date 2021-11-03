@@ -41,8 +41,8 @@ Ensure that the email sending logic is executed asynchronously.
 
 Add a security rule to protect this endpoint from anonymous access.
 Try calling the endpoint and verify that it is not accessible.
-Create a user in the JEE platform you are using and try to send an email now.
-(Bonus: also secure the EJB.)
+Create a user using Spring security and try to send an email now (either with the autoconfigured InMemoryUserDetailsService, your own definition of an InMemoryUserDetailsService, or even a custom UserDetailsService bean altogether).
+(Bonus: also secure the service bean with global method security.)
 
 ## Mock SMTP (MailHog)
 
